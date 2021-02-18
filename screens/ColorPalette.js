@@ -6,10 +6,10 @@ const ColorPalette = ({ route }) => {
     const { colors, paletteName } = route.params;
     return (
         <FlatList 
-        ListHeaderComponent={<Text style={styles.text}>{paletteName}</Text>}
-        data={colors}
-        keyExtractor={item => item.colorName}
-        renderItem={({ item }) => <Colors name={item.colorName} hexCode={item.hexCode}/>}
+            ListHeaderComponent={<Text style={styles.text}>{paletteName}</Text>}
+            data={colors}
+            keyExtractor={item => item.colorName}
+            renderItem={({ item }) => <Colors name={item.colorName} hexCode={item.hexCode}/>}
         />
     );
 };

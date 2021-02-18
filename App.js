@@ -1,25 +1,41 @@
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet, FlatList } from 'react-native';
+// import { View, Text, SafeAreaView, StyleSheet, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import ColorBox from './components/ColorBox';
-// import Colors from './components/Colors';
 import Home from './screens/Home';
 import ColorPalette from './screens/ColorPalette'
+import ColorPaletteModal from './screens/ColorPaletteModal';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const MainStack = createStackNavigator();
+
+const MainStackScreen = () => {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen name="Home" component={Home} />
+      <MainStack.Screen
+        name="ColorPalette"
+        component={ColorPalette}
+        options={({ route }) => ({ title: route.params.paletteName })}
+      />
+    </MainStack.Navigator>
+  );
+};
 
 const App = () => {
 return (
   <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen 
-      name="ColorPalette" 
-      component={ColorPalette} 
-      options={({ route }) => ({ title: route.params.paletteName })}
+    <RootStack.Navigator mode="modal">
+      <RootStack.Screen
+        name="Main"
+        component={MainStackScreen}
+        options={{ headerShown: false }}
       />
-    </Stack.Navigator>
+        <RootStack.Screen
+        name="ColorPaletteModal"
+        component={ColorPaletteModal}
+      />
+    </RootStack.Navigator>
   </NavigationContainer>
   )
 };
