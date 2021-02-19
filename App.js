@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
-import ColorPalette from './screens/ColorPalette'
+import ColorPalette from './screens/ColorPalette';
 import ColorPaletteModal from './screens/ColorPaletteModal';
 
 const RootStack = createStackNavigator();
@@ -23,21 +23,21 @@ const MainStackScreen = () => {
 };
 
 const App = () => {
-return (
-  <NavigationContainer>
-    <RootStack.Navigator mode="modal">
-      <RootStack.Screen
-        name="Main"
-        component={MainStackScreen}
-        options={{ headerShown: false }}
-      />
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator mode="modal">
         <RootStack.Screen
-        name="ColorPaletteModal"
-        component={ColorPaletteModal}
-      />
-    </RootStack.Navigator>
-  </NavigationContainer>
-  )
+          name="Main"
+          component={MainStackScreen}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+          name="ColorPaletteModal"
+          component={ColorPaletteModal}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default App;
